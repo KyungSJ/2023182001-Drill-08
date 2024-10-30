@@ -13,6 +13,10 @@ class Idle:
             boy.action = 2
         elif right_up(e) or left_down(e):
             boy.action = 3
+        elif boy.action == 1:
+            boy.action = 3
+        elif boy.action == 0:
+            boy.action = 2
         boy.frame = 0
         boy.dir = 0
         # 시작 시간을 기록
