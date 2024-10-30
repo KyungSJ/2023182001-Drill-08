@@ -3,7 +3,7 @@ from xml.dom.minidom import Identified
 
 from pico2d import load_image, get_time
 
-from state_machine import StateMachine, space_down, time_out, right_down, left_down, left_up, right_up
+from state_machine import StateMachine, space_down, time_out, right_down, left_down, left_up, right_up, a_down
 
 
 class Idle:
@@ -87,6 +87,20 @@ class Run:
             boy.x, boy.y
         )
         pass
+class AutoRun:
+    @staticmethod
+    def enter(boy, e):
+        pass
+    @staticmethod
+    def exit(boy, e):
+        pass
+    @staticmethod
+    def do(boy):
+        pass
+    @staticmethod
+    def draw(boy):
+        pass
+
 
 class Boy:
     def __init__(self):
@@ -99,8 +113,9 @@ class Boy:
         self.state_machine.start(Idle) # 객체를 생성한게 아니고, 직접 Idle이라는 클래스를 사용
         self.state_machine.set_transitions(
             {
-                Idle: {right_down: Run, left_down: Run, left_up: Run, right_up:Run, time_out: Sleep},
+                Idle: {right_down: Run, left_down: Run, left_up: Run, right_up: Run, a_down: AutoRun, time_out: Sleep},
                 Run: {right_down: Idle, left_down: Idle, right_up: Idle, left_up: Idle},
+                AutoRun: {right_down: Run, left_down: Run, left_up: Run, right_up: Run, time_out: Idle},
                 Sleep: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, space_down: Idle}
             }
         )
