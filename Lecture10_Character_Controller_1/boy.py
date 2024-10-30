@@ -90,6 +90,12 @@ class Run:
 class AutoRun:
     @staticmethod
     def enter(boy, e):
+        if boy.action == 3:
+            boy.action = 1
+            boy.dir = 1
+        elif boy.action == 2:
+            boy.action = 0
+            boy.dir = -1
         pass
     @staticmethod
     def exit(boy, e):
