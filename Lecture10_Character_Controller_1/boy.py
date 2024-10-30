@@ -96,6 +96,7 @@ class AutoRun:
         elif boy.action == 2:
             boy.action = 0
             boy.dir = -1
+        boy.frame = 0
         pass
     @staticmethod
     def exit(boy, e):
