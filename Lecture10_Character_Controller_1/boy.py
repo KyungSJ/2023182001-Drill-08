@@ -97,6 +97,7 @@ class AutoRun:
             boy.action = 0
             boy.dir = -1
         boy.frame = 0
+        boy.start_time = get_time()
         pass
     @staticmethod
     def exit(boy, e):
