@@ -114,6 +114,9 @@ class AutoRun:
             boy.action = 1
             boy.dir = 1
             boy.frame = 0
+
+        if get_time() - boy.start_time > 5:
+            boy.state_machine.add_event(('Time OUT', 0))
         pass
     @staticmethod
     def draw(boy):
